@@ -1,4 +1,4 @@
-x_b = {
+X_B = {
   ("B", "s1"):("X", "R", "s2"),
   ("B", "s2"):("B", "L", "s3"),
   ("X", "s3"):("B", "R", "s4"),
@@ -10,10 +10,11 @@ def simulate():
   tape = ["B", "B"]
   head = 0
   state = "s1"
-  print("called")
   for _ in range(8):
-    key = x_b[tape[head], state]
-    print(key)
-
+    print(state + ": " + "".join(tape))
+    print("    " + " " * head + "^")
+    key = X_B[tape[head], state]
+    tape[head], direction, state = key
+    head += 1 if direction == "R" else -1
 
 simulate()
